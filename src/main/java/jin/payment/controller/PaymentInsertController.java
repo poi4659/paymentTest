@@ -45,8 +45,6 @@ public class PaymentInsertController implements Controller{
         PaymentDTO paymentDTO = new PaymentDTO();
         
 
-        
-        
 //      멤버십 정보를 paymentDTO 객체에 저장 (사용자 아이디는 나중에 로그인 연동 시 처리할 예정)
         paymentDTO.setUser_id(user_id);
         paymentDTO.setMembership_grade(membership_grade);
@@ -58,9 +56,7 @@ public class PaymentInsertController implements Controller{
         paymentDTO.setPayment_price(payment_price);
         
         log.info("멤버십 결제 등록 : " + paymentDTO);
-        
-//      결제 내역 테이블에 정보 저장
-
+       
 
         PaymentDAO paymentDAO = new PaymentDAO();
         
