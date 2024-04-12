@@ -382,8 +382,6 @@ public class PaymentDAO implements PaymentService {
     }
 
 
-
-
 //	멤버십 결제 정보 삭제
 	@Override
 	public PaymentDTO paymentDelete(PaymentDTO paymentDTO) {
@@ -419,6 +417,53 @@ public class PaymentDAO implements PaymentService {
 
         } catch (Exception e) {
             log.error("멤버십 결제 정보 삭제 실패 - " + e);
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return paymentDTO;
+    }
+
+//	멤버십 결제 내역 삭제
+	@Override
+	public PaymentDTO paymentHistoryDelete(PaymentDTO paymentDTO) {
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            // JNDI를 사용하여 데이터 소스 가져오기
+            Context context = new InitialContext();
+            DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
+            connection = dataSource.getConnection();
+
+            String sql = "delete from payment_history ";
+			sql += " where user_id = ? ";
+			log.info("SQL - " + sql);
+			
+            preparedStatement = connection.prepareStatement(sql);
+            
+            preparedStatement.setString(1, paymentDTO.getUser_id());
+
+            // 쿼리 실행
+            int count = preparedStatement.executeUpdate();
+
+            if (count > 0) {
+                // 자동 커밋 해제
+                connection.setAutoCommit(false);
+                connection.commit();
+                log.info("커밋되었습니다.");
+            } else {
+                connection.rollback();
+                log.info("롤백되었습니다.");
+            }
+
+        } catch (Exception e) {
+            log.error("멤버십 결제 내역 삭제 실패 - " + e);
         } finally {
             try {
                 preparedStatement.close();

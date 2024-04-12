@@ -25,4 +25,7 @@ public interface PaymentService {
 
 //	결제 내역 정보 저장
 	public PaymentDTO paymentHistoryInsert(PaymentDTO paymentDTO);
+
+//	결제 내역 정보 삭제
+	public PaymentDTO paymentHistoryDelete(PaymentDTO paymentDTO);
 }
