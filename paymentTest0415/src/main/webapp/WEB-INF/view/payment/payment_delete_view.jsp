@@ -7,7 +7,10 @@
 <title>멤버십 해지</title>
 </head>
 <body>
-<h1>멤버십 해지 완료</h1>
-
+	<script type="text/javascript">
+		alert("해지가 성공적으로 완료되었습니다.");
+		location.href = "./PaymentSelect.pay";
+		
+	</script>
 </body>
 </html>

@@ -5,27 +5,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>멤버십 가입</title>
+    <title>멤버십 가입 결제 완료</title>
 </head>
 <body>
-    <h1>멤버십 정보</h1>
-    <table border="1">
-        <tr>
-            <th>사용자 아이디</th>
-            <th>멤버십 등급</th>
-            <th>결제 날짜</th>
-            <th>결제 수단</th>
-            <th>결제 금액</th>
-        </tr>
-        <tr>
-            <td>${paymentDTO.user_id}</td>
-            <td>${paymentDTO.membership_grade}</td>
-
-            <td>${paymentDTO.payment_date}</td> 
-            
-            <td>${paymentDTO.payment_method}</td>
-            <td>${paymentDTO.payment_price}</td>
-        </tr>
-    </table>
+<script type="text/javascript">
+	alert("결제가 성공적으로 완료되었습니다.");
+	location.href = "./PaymentSelectDetail.pay?user_id=${paymentDTO.user_id}";
+		
+</script>
 </body>
 </html>

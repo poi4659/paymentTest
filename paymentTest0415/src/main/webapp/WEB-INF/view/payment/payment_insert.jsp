@@ -6,8 +6,11 @@
     <title>멤버십 가입</title>
 </head>
 <body>
-    <h1>가입한 멤버십이 없습니다. 멤버십에 가입하세요.</h1><br>
-    <h1>멤버십 가입</h1>
+    <h3>가입한 멤버십이 없습니다.</h3>
+    <h3>멤버십에 가입하세요.</h3>
+    
+    <h2>멤버십 가입</h2>
+    
     <form action="./PaymentInsert.pay" method="post" id="PaymentInsert">
         아이디: <input type="text" name="user_id" id="user_id"
         value="${param.user_id}"><br>

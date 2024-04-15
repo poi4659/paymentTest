@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>멤버십</title>
+<title>멤버십 가입</title>
 </head>
 
 <body>

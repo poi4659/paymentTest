@@ -65,7 +65,7 @@ public class PaymentUpdateController implements Controller{
         paymentDAO.paymentHistoryInsert(paymentDTO);
         
 // 		업데이트된 멤버십 정보를 JSP 파일에 전달 
-        request.setAttribute("membershipDTO",paymentDTO);
+        request.setAttribute("paymentDTO",paymentDTO);
 
 //      MembershipHandlerAdapter 객체 생성
         PaymentHandlerAdapter paymentHandlerAdapter = new PaymentHandlerAdapter();
