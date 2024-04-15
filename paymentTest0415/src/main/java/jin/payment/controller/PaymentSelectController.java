@@ -29,6 +29,8 @@ public class PaymentSelectController implements Controller {
 		PaymentHandlerAdapter paymentHandlerAdapter = new PaymentHandlerAdapter();
 
 		request.setAttribute("paymentDTO", paymentDTO);
+		// user_id도 request에 설정
+	    request.setAttribute("user_id", user_id);
 		paymentHandlerAdapter.setPath("/WEB-INF/view/payment/payment_select_view.jsp"); // 멤버십 정보 페이지로 이동
 
 //          NullPointerException 방지-멤버십 정보가 null이 아닌 경우에만 해당 정보를 전달
