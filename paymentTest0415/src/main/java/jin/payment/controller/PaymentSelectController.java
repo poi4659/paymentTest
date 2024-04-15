@@ -18,9 +18,9 @@ public class PaymentSelectController implements Controller {
 	@Override
 	public PaymentHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
 		String user_id = request.getParameter("user_id");
-		
+
 		PaymentDAO paymentDAO = new PaymentDAO();
-		
+
 //		사용자 아이디 조회 
 		PaymentDTO paymentDTO = paymentDAO.getPaymentByUserId(user_id);
 
@@ -28,24 +28,18 @@ public class PaymentSelectController implements Controller {
 
 		PaymentHandlerAdapter paymentHandlerAdapter = new PaymentHandlerAdapter();
 
-		if (paymentDTO == null) {
-			// 멤버십에 가입하지 않은 경우 가입 페이지 이동할 수 있는 페이지로 이동
-			paymentHandlerAdapter.setPath("/WEB-INF/view/payment/payment_insert.jsp");
-		} else {
-			// 조회된 멤버십 정보를 JSP 파일에 전달
-			request.setAttribute("paymentDTO", paymentDTO);
-			paymentHandlerAdapter.setPath("/WEB-INF/view/payment/payment_select_view.jsp"); // 멤버십 정보 페이지로 이동
+		request.setAttribute("paymentDTO", paymentDTO);
+		paymentHandlerAdapter.setPath("/WEB-INF/view/payment/payment_select_view.jsp"); // 멤버십 정보 페이지로 이동
 
-//          NullPointerException 방지
-			if (paymentDTO != null) {
-				request.setAttribute("user_id", paymentDTO.getUser_id());
-				request.setAttribute("membership_grade", paymentDTO.getMembership_grade());
-				request.setAttribute("payment_date", paymentDTO.getPayment_date());
-				request.setAttribute("payment_method", paymentDTO.getPayment_method());
-				request.setAttribute("payment_price", paymentDTO.getPayment_price());
-			}
-			log.info(paymentDTO);
+//          NullPointerException 방지-멤버십 정보가 null이 아닌 경우에만 해당 정보를 전달
+		if (paymentDTO != null) {
+			request.setAttribute("user_id", paymentDTO.getUser_id());
+			request.setAttribute("membership_grade", paymentDTO.getMembership_grade());
+			request.setAttribute("payment_date", paymentDTO.getPayment_date());
+			request.setAttribute("payment_method", paymentDTO.getPayment_method());
+			request.setAttribute("payment_price", paymentDTO.getPayment_price());
 		}
+		log.info(paymentDTO);
 
 		return paymentHandlerAdapter;
 	}
