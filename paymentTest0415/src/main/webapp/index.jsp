@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +19,12 @@
         <input type="text" id="user_id" name="user_id">
         <input type="submit" value="확인">
 </form>
+
+<!-- 세션에 사용자 아이디 입력받은 거 저장--> 
+<c:if test="${not empty param.user_id}">
+    <c:set var="user_id" value="${param.user_id}" />
+    <c:set target="${session}" property="user_id" value="${user_id}" />
+</c:if>
 
 </body>
 </html>

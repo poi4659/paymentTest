@@ -31,11 +31,14 @@ public class PaymentDispatcherServlet extends HttpServlet {
        
 	private static Log log = LogFactory.getLog(PaymentDispatcherServlet.class);
 
+//	HTTP GET 또는 POST 요청을 처리. 클라이언트의 모든 요청을 처리
+//	서블릿이 클라이언트로부터 받은 HTTP 요청 URL 처리
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{		
-//		서블릿이 클라이언트로부터 받은 HTTP 요청 URL 처리
 		
+//		현재 요청된 URI를 반환
 		String requestURI = request.getRequestURI();
 
+//		웹 애플리케이션의 컨텍스트 경로를 반환
 		String contextPath = request.getContextPath();
 		
 		/*
@@ -54,6 +57,7 @@ public class PaymentDispatcherServlet extends HttpServlet {
 		Controller controller = null;
 		
 //		멤버십 결제 메인 페이지
+		
 		if (pathURL.equals("/PaymentSelect.pay")) {
 			controller = new PaymentSelectController();
 
@@ -155,8 +159,10 @@ public class PaymentDispatcherServlet extends HttpServlet {
 //		isRedirect 메서드 값이 false이면 포워드 방식으로 처리하고 true면 리다이렉트로 처리
 		if (paymentHandlerAdapter != null) {
 			if (paymentHandlerAdapter.isRedirect()) {
+//				리다이렉트인 경우 response.sendRedirect()를 사용하여 새로운 URL로 이동
 				response.sendRedirect(paymentHandlerAdapter.getPath());
 			} else {
+//				포워드인 경우 RequestDispatcher를 사용하여 요청과 응답을 해당 JSP 파일로 전달
 				RequestDispatcher dispatcher = request.getRequestDispatcher(paymentHandlerAdapter.getPath());
 				dispatcher.forward(request, response);
 			}

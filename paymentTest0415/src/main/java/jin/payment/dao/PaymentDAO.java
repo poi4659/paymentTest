@@ -350,6 +350,7 @@ public class PaymentDAO implements PaymentService {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, paymentDTO.getMembership_grade());
+
             preparedStatement.setString(2, paymentDTO.getPayment_method());
             preparedStatement.setInt(3, paymentDTO.getPayment_price());
             preparedStatement.setString(4, paymentDTO.getUser_id());

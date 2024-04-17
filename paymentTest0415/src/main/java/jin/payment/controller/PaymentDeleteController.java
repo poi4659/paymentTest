@@ -29,7 +29,6 @@ public class PaymentDeleteController implements Controller{
 // 		속성에 DTO 객체를 속성값으로 저장한다.
 		request.setAttribute("paymentDTO", paymentDTO);
 		
-		
 //      멤버십 결제 정보 payment 테이블에서 삭제
 		paymentDTO = paymentDAO.paymentDelete(paymentDTO);
 		log.info("멤버십 결제 정보 삭제 : " + paymentDTO);
