@@ -60,13 +60,7 @@
     </div>
    </div>
   </div>
-  <%-- 세션에 저장된 사용자 아이디 확인 --%>
-<c:if test="${not empty sessionScope.user_id}">
-    <p>세션에 저장된 사용자 아이디: ${sessionScope.user_id}</p>
-</c:if>
-<c:if test="${empty sessionScope.user_id}">
-    <p>세션에 저장된 사용자 아이디가 없습니다.</p>
-</c:if>
  </section>
+ 
 </body>
 </html>

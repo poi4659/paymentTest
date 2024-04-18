@@ -71,7 +71,6 @@ public class PaymentInsertController implements Controller{
         
         PaymentHandlerAdapter paymentHandlerAdapter = new PaymentHandlerAdapter();
 		
-		// 가입 완료 페이지로 이동
 //		JSP 파일의 경로를 설정한 후 paymentHandlerAdapter 객체 생성하여 반환
         paymentHandlerAdapter.setPath("/WEB-INF/view/payment/payment_insert_view.jsp");
 		

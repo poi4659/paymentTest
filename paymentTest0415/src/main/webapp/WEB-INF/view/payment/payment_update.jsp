@@ -40,8 +40,9 @@
          <div class="form-group row">
           <label for="membership_grade" class="ml-sm-3 col-form-label"> 멤버십 등급 </label>
           <div class="ml-sm-3">
-           	<input type="radio" name="membership_grade" value="Gold"> Gold (10000원)
-        	<input type="radio" name="membership_grade" value="Silver"> Silver (7000원)<br>
+          	<b></b>
+           	<input type="radio" name="membership_grade" value="Gold"> Gold (10000원/월)
+        	<input type="radio" name="membership_grade" value="Silver"> Silver (7000원/월)<br>
           </div>
          </div>
          
